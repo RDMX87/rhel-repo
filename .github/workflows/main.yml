@@ -21,10 +21,11 @@ jobs:
           createrepo --update 7/os/x86_64
         
       - name: Update Repository
-        uses: EndBug/add-and-commit@v7
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          add: '7/os/x86_64'
-          author_name: RDMX87
-          author_email: RDMX87@motorolasolutions.com
-          message: 'Update Repository'
-          push: true
+          commit_message: Update Repository
+          file_pattern: 7/os/x86_64/*
+          commit_user_name: RDMX87
+          commit_user_email: RDMX87@motorolasolutions.com
+          commit_author: RDMX87 <RDMX87@motorolasolutions.com>
+          disable_globbing: false
