@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       package_url:
-        description: 'Package URL'     
+        description: 'Package URLs'     
         required: true
         default: ''
 jobs:
