@@ -15,28 +15,19 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         
-      #- name: Keep Track of RPMs in Git LFS
-      #  run: git lfs track "*.rpm"
-        
       - name: Download New RPM
         env:
           URL_LIST: ${{ github.event.inputs.package_url }}
         run: |
           echo $URL_LIST | xargs -n 1 -P 8 wget -P 7/os/x86_64/Packages -q
           createrepo --update 7/os/x86_64
-          
-      - name: Upload RPMs
-        uses: actions/upload-artifact@v2
-        with:
-          name: rhel-repo-dev
-          path: 7/os/x86_64/*
         
-      #- name: Update Repository
-      #  uses: stefanzweifel/git-auto-commit-action@v4
-      #  with:
-      #    commit_message: Update Repository
-      #    file_pattern: 7/os/x86_64/*
-      #    commit_user_name: RDMX87
-      #    commit_user_email: RDMX87@motorolasolutions.com
-      #    commit_author: RDMX87 <RDMX87@motorolasolutions.com>
-      #    disable_globbing: false
+      - name: Update Repository
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update Repository
+          file_pattern: 7/os/x86_64/*
+          commit_user_name: RDMX87
+          commit_user_email: RDMX87@motorolasolutions.com
+          commit_author: RDMX87 <RDMX87@motorolasolutions.com>
+          disable_globbing: false
