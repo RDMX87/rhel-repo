@@ -1,4 +1,4 @@
-name: Run Updater
+name: Add Packages
 
 on: 
   workflow_dispatch:
@@ -8,9 +8,9 @@ on:
         required: true
         default: ''
 jobs:
-  updater:
+  add_packages:
     runs-on: self-hosted
-    name: updater-1
+    name: add-packages
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
