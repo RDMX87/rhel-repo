@@ -16,3 +16,5 @@ cat pkgs.txt | while read pkg; do
 done
 
 createrepo --update 7/os/x86_64
+
+chown -R user:user 7/os/x86_64
