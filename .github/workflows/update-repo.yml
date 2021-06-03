@@ -13,9 +13,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
         
-      - name: Keep Track of RPMs in Git LFS
-        run: git lfs track "*.rpm"
-        
       - name: Check RPM updates
         run: sudo bash -x update-repo.sh
         
