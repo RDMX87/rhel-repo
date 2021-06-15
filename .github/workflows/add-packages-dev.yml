@@ -1,4 +1,4 @@
-name: Add Packages
+name: [DEV] Add Packages
 
 on: 
   workflow_dispatch:
@@ -19,14 +19,14 @@ jobs:
         env:
           URL_LIST: ${{ github.event.inputs.package_url }}
         run: |
-          echo $URL_LIST | xargs -n 1 -P 8 wget -P 7/os/x86_64/Packages -q
-          createrepo --update 7/os/x86_64
+          echo $URL_LIST | xargs -n 1 -P 8 wget -P dev/7/os/x86_64/Packages -q
+          createrepo --update dev/7/os/x86_64
         
       - name: Update Repository
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Update Repository
-          file_pattern: 7/os/x86_64/*
+          commit_message: Update DEV Repository
+          file_pattern: dev/7/os/x86_64/*
           commit_user_name: RDMX87
           commit_user_email: RDMX87@motorolasolutions.com
           commit_author: RDMX87 <RDMX87@motorolasolutions.com>
