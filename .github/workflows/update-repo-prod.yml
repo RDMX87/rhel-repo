@@ -1,4 +1,4 @@
-name: Update Repo
+name: [PROD] Update Repo
 
 on:
   workflow_dispatch
@@ -14,13 +14,13 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Check RPM updates
-        run: sudo bash -x update-repo.sh
+        run: sudo bash -x prod/update-repo.sh
         
       - name: Update Repository
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Update Repository
-          file_pattern: 7/os/x86_64/*
+          commit_message: Update PROD Repository
+          file_pattern: prod/7/os/x86_64/*
           commit_user_name: RDMX87
           commit_user_email: RDMX87@motorolasolutions.com
           commit_author: RDMX87 <RDMX87@motorolasolutions.com>
