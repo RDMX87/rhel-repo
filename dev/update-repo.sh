@@ -9,12 +9,10 @@ cat dev/pkgs.txt | while read pkg; do
       pkg_version=$(echo $check_update_str | awk '{ print $2 }')
       pkg_file_name_version=$(echo $pkg_version | cut -d: -f2)
       if [[ ! -e "dev/7/os/x86_64/Packages/$pkg_file-$pkg_file_name_version.$pkg_arch.rpm" ]]; then
-        yum update --downloadonly --downloaddir=dev/7/os/x86_64/Packages $pkg_file-$pkg_version.$pkg_arch
+        yumdownloader --destdir=dev/7/os/x86_64/Packages --resolve $pkg_file-$pkg_version.$pkg_arch
       fi
     fi
   fi
 done
 
 createrepo --update dev/7/os/x86_64
-
-chown -R user:user dev/7/os/x86_64
