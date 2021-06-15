@@ -1,4 +1,4 @@
-name: [PROD] Update Repo
+name: '[PROD] Update Repo'
 
 on:
   workflow_dispatch
