@@ -1,0 +1,5 @@
+[rhel-repo-dev]
+name=Development repo
+baseurl=https://rdmx87.github.io/rhel-repo-dev/7/os/x86_64
+enabled=1
+gpgcheck=0
