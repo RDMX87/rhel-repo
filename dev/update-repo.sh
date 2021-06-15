@@ -2,7 +2,7 @@
 
 cat dev/pkgs.txt | while read pkg; do
   if [[ ! -z $pkg ]]; then
-    check_update_str=$(yum check-update $pkg | grep $pkg)
+    check_update_str=$(yum list $pkg | tail -1)
     if [[ ! -z $check_update_str ]]; then
       pkg_file=$(echo $check_update_str | awk '{ print $1 }' | cut -d. -f1)
       pkg_arch=$(echo $check_update_str | awk '{ print $1 }' | cut -d. -f2)
