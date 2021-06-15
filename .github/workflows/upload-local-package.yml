@@ -1,0 +1,39 @@
+name: 'Upload local package'
+
+on: 
+  workflow_dispatch:
+    inputs:
+      dev_prod_repository:
+        description: 'Specify repository (dev/prod)'     
+        required: true
+        default: 'dev'
+      local_path:
+        description: 'Specify absolute local path'     
+        required: true
+        default: ''
+        
+jobs:
+  upload_local_package:
+    runs-on: self-hosted
+    name: upload-local-package
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        
+      - name: Copy package to repository
+        env:
+          PACKAGE_PATH: ${{ github.event.inputs.local_path }}
+          DEV_PROD_REPOSITORY: ${{ github.event.inputs.dev_prod_repository }}
+        run: |
+          cp $PACKAGE_PATH $DEV_PROD_REPOSITORY/7/os/x86_64/Packages/
+          createrepo --update $DEV_PROD_REPOSITORY/7/os/x86_64
+        
+      - name: Update Repository
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update DEV Repository
+          file_pattern: dev/7/os/x86_64/*
+          commit_user_name: RDMX87
+          commit_user_email: RDMX87@motorolasolutions.com
+          commit_author: RDMX87 <RDMX87@motorolasolutions.com>
+          disable_globbing: false
