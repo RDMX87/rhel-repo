@@ -15,6 +15,7 @@ nss-softokn
 nss-sysinit
 nss-tools
 nss-util
+nspr
 bind-export-libs
 kernel
 kernel-devel
