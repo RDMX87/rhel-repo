@@ -1,4 +1,4 @@
-name: [PROD] Add Packages
+name: '[PROD] Add Packages'
 
 on: 
   workflow_dispatch:
