@@ -1,5 +1,0 @@
-[rhel-repo-dev]
-name=Production repo
-baseurl=https://rdmx87.github.io/rhel-repo/prod/7/os/x86_64
-enabled=1
-gpgcheck=0

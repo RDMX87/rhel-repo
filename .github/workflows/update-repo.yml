@@ -1,4 +1,4 @@
-name: '[DEV] Update Repo'
+name: 'Update Repo'
 
 on:
   workflow_dispatch
@@ -14,13 +14,13 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Check RPM updates
-        run: bash -x dev/update-repo.sh
+        run: bash -x update-repo.sh
         
       - name: Update Repository
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Update DEV Repository
-          file_pattern: dev/7/os/x86_64/*
+          file_pattern: 7/os/x86_64/*
           commit_user_name: RDMX87
           commit_user_email: RDMX87@motorolasolutions.com
           commit_author: RDMX87 <RDMX87@motorolasolutions.com>
