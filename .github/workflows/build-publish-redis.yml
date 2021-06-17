@@ -1,0 +1,39 @@
+name: 'Build and Publish Redis'
+
+on: 
+  workflow_dispatch:
+    inputs:
+      redis_version:
+        description: 'Redis version'     
+        required: true
+        default: '6.2.4'
+jobs:
+  build_publish_redis:
+    runs-on: self-hosted
+    name: build-publish-redis
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        
+      - name: Download sources and Package Redis
+        env:
+          REDIS_VERSION: ${{ github.event.inputs.redis_version }}
+        run: |
+          wget -P rpmbuild/SOURCES https://download.redis.io/releases/redis-$REDIS_VERSION.tar.gz
+          sed -i "s|redis_version|$REDIS_VERSION|" rpmbuild/SPECS/redis.spec
+          rpmbuild -bb rpmbuild/SPECS/redis.spec
+
+      - name: Move Redis rpm and update repo metadata
+        run: |
+          mv rpmbuild/RPMS/x86_64/redis-$REDIS_VERSION-0.x86_64.rpm 7/os/x86_64/
+          createrepo --update 7/os/x86_64
+        
+      - name: Update Repository
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update DEV Repository
+          file_pattern: 7/os/x86_64/*
+          commit_user_name: RDMX87
+          commit_user_email: RDMX87@motorolasolutions.com
+          commit_author: RDMX87 <RDMX87@motorolasolutions.com>
+          disable_globbing: false
