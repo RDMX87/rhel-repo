@@ -21,7 +21,7 @@ jobs:
         run: |
           wget -P rpmbuild/SOURCES https://download.redis.io/releases/redis-$REDIS_VERSION.tar.gz
           sed -i "s|redis_version|$REDIS_VERSION|" rpmbuild/SPECS/redis.spec
-          rpmbuild -bb rpmbuild/SPECS/redis.spec
+          rpmbuild rpmbuild/SPECS/redis.spec --bb --define "_rpmdir $(pwd)"
 
       - name: Move Redis rpm and update repo metadata
         run: |
