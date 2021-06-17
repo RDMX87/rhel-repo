@@ -24,6 +24,8 @@ jobs:
           rpmbuild rpmbuild/SPECS/redis.spec --bb --define "_topdir $(pwd)/rpmbuild" -v
 
       - name: Move Redis rpm and update repo metadata
+        env:
+          REDIS_VERSION: ${{ github.event.inputs.redis_version }}
         run: |
           mv rpmbuild/RPMS/x86_64/redis-$REDIS_VERSION-0.x86_64.rpm 7/os/x86_64/
           createrepo --update 7/os/x86_64
