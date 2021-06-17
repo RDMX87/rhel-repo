@@ -27,7 +27,7 @@ jobs:
         env:
           REDIS_VERSION: ${{ github.event.inputs.redis_version }}
         run: |
-          mv rpmbuild/RPMS/x86_64/redis-$REDIS_VERSION-0.x86_64.rpm 7/os/x86_64/
+          mv rpmbuild/RPMS/x86_64/redis-$REDIS_VERSION-0.x86_64.rpm 7/os/x86_64/Packages/
           createrepo --update 7/os/x86_64
         
       - name: Update Repository
