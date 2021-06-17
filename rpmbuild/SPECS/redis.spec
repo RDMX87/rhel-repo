@@ -18,7 +18,6 @@ Redis.IO custom RPM package
 
 %build
 make
-make test
 
 %install
 [ "$RPM_BUILD_ROOT" != "/" ] && rm -rf $RPM_BUILD_ROOT
