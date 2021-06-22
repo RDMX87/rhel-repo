@@ -58,6 +58,7 @@ if [[ $1 == 1 ]]; then
   mkdir -p /var/lib/redis/sentinel_26379
 fi
 if [[ $1 == 2 ]]; then
+  systemctl daemon-reload
   service redis-server restart
   service redis-sentinel restart
 fi
