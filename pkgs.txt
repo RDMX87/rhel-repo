@@ -16,6 +16,11 @@ nss-sysinit
 nss-tools
 nss-util
 nspr
+bind-libs
+bind-license
+geoipupdate
+GeoIP
+bind-libs-lite
 bind-export-libs
 bind-utils
 kernel
