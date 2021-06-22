@@ -43,15 +43,21 @@ install -m 755 %{_sourcedir}/redis-sentinel ${RPM_BUILD_ROOT}/etc/init.d/redis-s
 /usr/local/bin/redis-check-rdb
 
 %post
-mkdir -p /etc/redis /var/lib/redis
-ln -nsf /usr/local/bin/redis-benchmark /usr/bin/redis-benchmark
-ln -nsf /usr/local/bin/redis-check-aof /usr/bin/redis-check-aof
-ln -nsf /usr/local/bin/redis-check-dump /usr/bin/redis-check-dump
-ln -nsf /usr/local/bin/redis-cli /usr/bin/redis-cli
-ln -nsf /usr/local/bin/redis-sentinel /usr/bin/redis-sentinel
-ln -nsf /usr/local/bin/redis-server /usr/bin/redis-server
-firewall-cmd --zone=public --add-port=26379/tcp --permanent
-firewall-cmd --zone=public --add-port=26379/udp --permanent
-chkconfig --add redis-sentinel
-chkconfig redis-sentinel on
-mkdir -p /var/lib/redis/sentinel_26379
+if [[ $1 == 1 ]]; then
+  mkdir -p /etc/redis /var/lib/redis
+  ln -nsf /usr/local/bin/redis-benchmark /usr/bin/redis-benchmark
+  ln -nsf /usr/local/bin/redis-check-aof /usr/bin/redis-check-aof
+  ln -nsf /usr/local/bin/redis-check-dump /usr/bin/redis-check-dump
+  ln -nsf /usr/local/bin/redis-cli /usr/bin/redis-cli
+  ln -nsf /usr/local/bin/redis-sentinel /usr/bin/redis-sentinel
+  ln -nsf /usr/local/bin/redis-server /usr/bin/redis-server
+  firewall-cmd --zone=public --add-port=26379/tcp --permanent
+  firewall-cmd --zone=public --add-port=26379/udp --permanent
+  chkconfig --add redis-sentinel
+  chkconfig redis-sentinel on
+  mkdir -p /var/lib/redis/sentinel_26379
+fi
+if [[ $1 == 2 ]]; then
+  service redis-server restart
+  service redis-sentinel restart
+fi
