@@ -17,6 +17,7 @@ nss-tools
 nss-util
 nspr
 bind-export-libs
+bind-utils
 kernel
 kernel-devel
 kernel-tools
