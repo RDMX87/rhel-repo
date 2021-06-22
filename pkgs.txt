@@ -12,6 +12,7 @@ curl
 libcurl
 nss
 nss-softokn
+nss-softokn-freebl
 nss-sysinit
 nss-tools
 nss-util
