@@ -12,6 +12,7 @@ curl
 libcurl
 lttng-ust
 libicu
+userspace-rcu
 nss
 nss-softokn
 nss-softokn-freebl
@@ -110,3 +111,4 @@ sssd-krb5-common
 sssd-ldap
 sssd-proxy
 trousers
+unzip
