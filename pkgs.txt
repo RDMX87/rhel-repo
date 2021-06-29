@@ -10,6 +10,8 @@ glib2
 freetype
 curl
 libcurl
+lttng-ust
+libicu
 nss
 nss-softokn
 nss-softokn-freebl
