@@ -51,11 +51,11 @@ if [[ $1 == 1 ]]; then
   ln -nsf /usr/local/bin/redis-cli /usr/bin/redis-cli
   ln -nsf /usr/local/bin/redis-sentinel /usr/bin/redis-sentinel
   ln -nsf /usr/local/bin/redis-server /usr/bin/redis-server
-  firewall-cmd --zone=public --add-port=26379/tcp --permanent
-  firewall-cmd --zone=public --add-port=26379/udp --permanent
+  firewall-cmd --zone=public --add-port=18189/tcp --permanent
+  firewall-cmd --zone=public --add-port=18189/udp --permanent
   chkconfig --add redis-sentinel
   chkconfig redis-sentinel on
-  mkdir -p /var/lib/redis/sentinel_26379
+  mkdir -p /var/lib/redis/sentinel_18189
 fi
 if [[ $1 == 2 ]]; then
   systemctl daemon-reload
