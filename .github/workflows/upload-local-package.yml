@@ -19,7 +19,6 @@ jobs:
       - name: Copy package to repository
         env:
           PACKAGE_PATH: ${{ github.event.inputs.local_path }}
-          DEV_PROD_REPOSITORY: ${{ github.event.inputs.dev_prod_repository }}
         run: |
           cp $PACKAGE_PATH 7/os/x86_64/Packages/
           createrepo --update 7/os/x86_64
