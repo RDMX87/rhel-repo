@@ -25,6 +25,12 @@ bind-libs
 bind-license
 python-ply
 policycoreutils-python
+setools-libs
+checkpolicy
+python-IPy
+libsemanage-python
+audit-libs-python
+libcgroup
 geoipupdate
 GeoIP
 bind-libs-lite
