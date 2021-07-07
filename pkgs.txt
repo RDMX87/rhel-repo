@@ -23,6 +23,8 @@ nspr
 bind
 bind-libs
 bind-license
+python-ply
+policycoreutils-python
 geoipupdate
 GeoIP
 bind-libs-lite
