@@ -20,6 +20,7 @@ nss-sysinit
 nss-tools
 nss-util
 nspr
+bind
 bind-libs
 bind-license
 geoipupdate
