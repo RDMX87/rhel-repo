@@ -1,3 +1,5 @@
+authconfig
+make
 sudo
 grub2
 grub2-common
