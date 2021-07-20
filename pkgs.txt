@@ -156,3 +156,4 @@ perl-Pod-Perldoc
 perl-parent
 perl-HTTP-Tiny
 pcre2
+gssntlmssp
