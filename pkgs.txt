@@ -157,3 +157,8 @@ perl-parent
 perl-HTTP-Tiny
 pcre2
 gssntlmssp
+python3
+python3-libs
+libtirpc
+python3-pip
+python3-setuptools
