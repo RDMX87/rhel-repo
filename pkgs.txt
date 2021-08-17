@@ -125,6 +125,8 @@ trousers
 unzip
 git
 perl
+perl-Digest-SHA
+perl-Digest
 perl-Exporter
 perl-File-Path
 rsync
